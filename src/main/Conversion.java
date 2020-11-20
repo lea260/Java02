@@ -11,6 +11,7 @@ implements ActionListener, ItemListener {
 		private JTextField txt2;
 		private JLabel resultado;		
 		private JButton btnSumar;
+		private JComboBox combo1;
 		public Conversion() {			
 			setLayout(null);			
 			
@@ -32,10 +33,19 @@ implements ActionListener, ItemListener {
 			
 			resultado = new JLabel("Resultado:");
 			resultado.setBounds(10,90,100,30);		
-			add(resultado);//add(label1)			
+			add(resultado);//add(label1)	
+			
+			combo1 = new JComboBox();
+			combo1.setBounds(10,130,470,30);
+			add(combo1);//add(label1)
+			combo1.addItem("multiplicacion");
+			combo1.addItem("division");
+			combo1.addItem("suma");
+			combo1.addItem("resta");
+			
 			
 			btnSumar= new JButton("Sumar:");
-			btnSumar.setBounds(10, 130, 470, 30);
+			btnSumar.setBounds(10, 170, 470, 30);
 			add(btnSumar);
 			btnSumar.addActionListener((ActionListener) this);
 					
