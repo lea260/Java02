@@ -22,8 +22,9 @@ implements ActionListener {
 			add(text);
 			
 			
+			//40
 			boton1= new JButton("Agregar");
-			boton1.setBounds(10, 80, 100, 30);
+			boton1.setBounds(10, 60, 100, 30);
 			add(boton1);
 			boton1.addActionListener(this);
 			//boton1.addActionListener((ActionListener) this);
