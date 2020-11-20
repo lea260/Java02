@@ -11,7 +11,7 @@ implements ActionListener, ItemListener {
 		private JTextField txt2;
 		private JLabel resultado;		
 		private JButton btnSumar;
-		public Conversion() {
+		public Conversion() {			
 			setLayout(null);			
 			
 			label1 = new JLabel("Valor 01:");
@@ -19,7 +19,7 @@ implements ActionListener, ItemListener {
 			add(label1);//add(label1)
 			
 			txt1 = new JTextField();
-			txt1.setBounds(120,10,100,30);		
+			txt1.setBounds(120,10,360,30);		
 			add(txt1);//add(label1)
 			
 			label1 = new JLabel("Valor 02:");
@@ -27,11 +27,10 @@ implements ActionListener, ItemListener {
 			add(label1);//add(label1)
 			
 			txt2 = new JTextField();
-			txt2.setBounds(120,50,100,30);		
-			add(txt2);//add(label1)
+			txt2.setBounds(120,50,360,30);		
+			add(txt2);//add(label1)			
 			
-			
-			resultado = new JLabel("Resultado");
+			resultado = new JLabel("Resultado:");
 			resultado.setBounds(10,90,100,30);		
 			add(resultado);//add(label1)			
 			

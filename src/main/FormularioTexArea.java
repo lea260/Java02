@@ -18,7 +18,7 @@ KeyListener{
 	//contrucctor
 	public FormularioTexArea() {
 		setTitle("titulo del formulario");
-		setLayout(null);
+		setLayout(null);		
 		label = new JLabel("Usuario: ");
 		label.setBounds(10,10,100,30);		
 		add(label);

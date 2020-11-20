@@ -1,6 +1,5 @@
 package main;
 
-import javax.swing.*;
 
 public class PrimeraClase {
 	public static void main(String args[]) {		
