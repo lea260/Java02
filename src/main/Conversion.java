@@ -55,7 +55,7 @@ implements ActionListener, ItemListener {
 				valor1= Double.parseDouble(txt1.getText());
 				valor2= Double.parseDouble(txt2.getText());
 				double resultadoNum= valor1+valor2;
-				String resultadoStr = String.valueOf(resultadoNum);								
+				String resultadoStr = String.valueOf("Resultado:"+ resultadoNum);								
 				resultado.setText(resultadoStr);
 			}			
 		}
