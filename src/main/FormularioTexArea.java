@@ -59,7 +59,7 @@ KeyListener{
 		
 	}//end constructor		
 
-	
+	//evento click, implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
@@ -73,6 +73,7 @@ KeyListener{
 	}
 
 
+	//evento click, implements KeyListener
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// pulso un enter
