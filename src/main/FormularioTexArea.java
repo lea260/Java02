@@ -75,10 +75,15 @@ KeyListener{
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-		/*if (e.getSource()==text) {			
-			area.setText("aprete");
-		}*/
+		// pulso un enter
+		if (e.getSource()==text) {			
+			if (e.getKeyCode()== KeyEvent.VK_ENTER) {
+				texto= area.getText();
+				texto += text.getText()+ "\n";			
+				area.setText(texto);
+				text.setText("");
+			}
+		}
 	}
 
 
@@ -92,8 +97,6 @@ KeyListener{
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
-		if (e.getSource()==text) {			
-			area.setText("aprete");
-		}
+		
 	}
 }
