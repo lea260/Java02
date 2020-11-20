@@ -7,7 +7,8 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class FormularioTexArea extends JFrame 
-implements ActionListener {		
+implements ActionListener,
+KeyListener{		
 	private JLabel label;
 	private JTextField text;
 	private JTextArea area;
@@ -24,13 +25,14 @@ implements ActionListener {
 		//y=40, x=110
 		text = new JTextField();
 		text.setBounds(120, 10, 360, 30);
-		add(text);		
+		add(text);	
+		text.addKeyListener(this);;
 		//y=40
 		//nueva fila +10
 		
 		area = new JTextArea();
 		area.setBounds(10,60, 470, 200);
-		add(area);				
+		add(area);			
 		//260, suma setBounds(x,y, ancho, alto);
 		//y+alto+10px separacion
 		
@@ -66,6 +68,32 @@ implements ActionListener {
 			texto= area.getText();
 			texto += text.getText()+ "\n";			
 			area.setText(texto);
+			text.setText("");
 		}			
+	}
+
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		/*if (e.getSource()==text) {			
+			area.setText("aprete");
+		}*/
+	}
+
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		if (e.getSource()==text) {			
+			area.setText("aprete");
+		}
 	}
 }
