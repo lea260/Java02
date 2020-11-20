@@ -12,9 +12,11 @@ implements ActionListener {
 	private JTextField text;
 	private JTextArea area;
 	private JButton boton1;	
-	private JScrollPane pane1;
+	private JScrollPane pane1;	
+	private String texto;
 	//contrucctor
 	public FormularioTexArea() {
+		setTitle("titulo del formulario");
 		setLayout(null);
 		label = new JLabel("Usuario: ");
 		label.setBounds(10,10,100,30);		
@@ -34,7 +36,7 @@ implements ActionListener {
 		
 		pane1 = new JScrollPane(area);
 		pane1.setBounds(10, 60, 470, 200);
-		add(pane1)
+		add(pane1);
 		
 		
 		
@@ -61,8 +63,9 @@ implements ActionListener {
 		// TODO Auto-generated method stub
 		//this.label1.setText("has apretado botones");
 		if (e.getSource()==boton1) {
-			String texto = text.getText();
-			setTitle(texto);
+			texto= area.getText();
+			texto += text.getText()+ "\n";			
+			area.setText(texto);
 		}			
 	}
 }
