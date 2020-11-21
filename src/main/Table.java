@@ -1,5 +1,6 @@
 package main;
 
+import java.awt.Point;
 import java.awt.event.*;
 
 //import javax.swing.JButton;
@@ -83,8 +84,8 @@ implements ActionListener {
 		//boton1.addActionListener((ActionListener) this);		
 	}	
 		
-	private void agregarDatos() {
-		Object[][] data = new Object[][] {{"101", "Ramesh"}, {"102", "Adithya"}, {"103", "Jai"}, {"104", "Sai"}};
+	private void agregarDatos() {		
+		String[][] data = new String[][] {{"101", "Ramesh"}, {"102", "Adithya"}, {"103", "Jai"}, {"104", "Sai"}};
 		String[] columnNames = new String[] {"ID", "Name"};
 	    this.modelo = new DefaultTableModel(data, columnNames);
 	    this.tabla = new JTable(modelo);
@@ -123,6 +124,10 @@ implements ActionListener {
 			text1.setText("");
             // Agregamos los datos a la tabla
             modelo.addRow(datos);//modelo.setValueAt(aValue, row, column);
+            //pane1.getViewport().setViewPosition(new Point(0,0));
+            JScrollBar vertical = pane1.getVerticalScrollBar();
+            vertical.setValue( vertical.getMaximum());            
+            //modelo.setColumnCount(modelo.getRowCount());;
 		} else if (e.getSource()==botonEditar) {			
 			if (tabla.getSelectedRow() != -1) {
 				switch (this.modo1) {
