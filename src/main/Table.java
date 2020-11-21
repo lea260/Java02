@@ -16,12 +16,13 @@ enum modo {
 
 public class Table extends JFrame 
 implements ActionListener {
+	private int indiceEdit;
 	private int id;
 	private String nombre;
 	private modo modo1;
 	private JLabel label1;
 	private JTextField text1;
-	private JButton boton1;
+	private JButton botonAgregar;
 	private JButton botonEditar;
 	private JButton botonEliminar;	
 	private JTable tabla;
@@ -42,19 +43,19 @@ implements ActionListener {
 		
 		
 		//40
-		boton1= new JButton("Agregar");
-		boton1.setBounds(10, 60, 100, 30);
-		add(boton1);
-		boton1.addActionListener(this);
+		botonAgregar= new JButton("Agregar");
+		botonAgregar.setBounds(10, 60, 100, 30);
+		add(botonAgregar);
+		botonAgregar.addActionListener(this);
 		
 		botonEditar= new JButton("Editar");
 		botonEditar.setBounds(120, 60, 100, 30);
 		add(botonEditar);
 		botonEditar.addActionListener(this);
 		
-		//
+		
 		botonEliminar= new JButton("Eliminar");
-		botonEliminar.setBounds(120, 60, 100, 30);
+		botonEliminar.setBounds(230, 60, 100, 30);
 		add(botonEliminar);
 		botonEliminar.addActionListener(this);
 		
@@ -79,12 +80,14 @@ implements ActionListener {
 	}	
 		
 	private void agregarDatos() {
-        for (Integer i = 0; i < 9; i++) {
+		Object[][] datosAux = new Object[][] {{"101", "Ramesh"}, {"102", "Adithya"}, {"103", "Jai"}, {"104", "Sai"}};
+		int largo = datosAux.length;
+        for (Integer i = 0; i < largo; i++) {
         	indice = (Integer) i;
-            String mensaje = i + " UNIDADES";
+            String mensaje = i + " producto";
 
             // Creamos un nuevo renglon para la tabla
-            String[] datos = {i.toString(), mensaje};
+            String[] datos = {(String)datosAux[i][0] , (String)datosAux[i][1] };
             // Agregamos los datos a la tabla
             modelo.addRow(datos);
         }
@@ -95,20 +98,31 @@ implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		//this.label1.setText("has apretado botones");
-		if (e.getSource()==boton1) {
+		
+		
+			//eliminar
+			
+		if (e.getSource()==botonEliminar) {
+			int dialogResult = JOptionPane.showConfirmDialog (null, 
+					"Desea eliminar id:" + id,
+					"Warning",JOptionPane.YES_NO_OPTION);
+			if(dialogResult == JOptionPane.YES_OPTION) {
+				modelo.removeRow(this.indiceEdit);
+			}
+			
+		} else if (e.getSource()==botonAgregar) {
 			indice++;
 			String[] datos = {indice.toString(), text1.getText()};
 			text1.setText("");
             // Agregamos los datos a la tabla
-            modelo.addRow(datos);
-		}
-		//modelo.setValueAt(aValue, row, column);
-		if (e.getSource()==botonEditar) {			
+            modelo.addRow(datos);//modelo.setValueAt(aValue, row, column);
+		} else if (e.getSource()==botonEditar) {			
 			if (tabla.getSelectedRow() != -1) {
 				switch (this.modo1) {
 				case normal:
 					botonEditar.setText("Confirmar");
-					this.modo1 = modo.edit;					
+					this.modo1 = modo.edit;		
+					indiceEdit = tabla.getSelectedRow();
 		            String codigo = (String) modelo.getValueAt(tabla.getSelectedRow(), 0);
 		            id = Integer.parseInt(codigo);
 		            nombre = (String) modelo.getValueAt(tabla.getSelectedRow(), 1);
@@ -121,8 +135,8 @@ implements ActionListener {
 					this.modo1 = modo.normal;
 					botonEditar.setText("Editar");					
 					String texto =  text1.getText();
-					//actualizar modelo
-					modelo.setValueAt(texto, id, 1);										
+					//actualizar modelo					
+					modelo.setValueAt(texto, this.indiceEdit, 1);										
 					break;
 				default:
 					
@@ -131,7 +145,6 @@ implements ActionListener {
 	        } else {
 	            System.out.println("Seleccione un renglon primero");
 	        }
-		}
-		
+		}		
 	}
 }
