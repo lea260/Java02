@@ -20,13 +20,14 @@ implements ActionListener {
 	private String nombre;
 	private modo modo1;
 	private JLabel label1;
-	private JTextField text;
+	private JTextField text1;
 	private JButton boton1;
-	private JButton botonEditar;		
+	private JButton botonEditar;
+	private JButton botonEliminar;	
 	private JTable tabla;
 	private JScrollPane pane1;
 	private DefaultTableModel modelo;
-	private final String[] columnas = {"Indice", "Nombre"};
+	private final String[] columnas = {"Id", "Nombre"};
 	private static Integer indice=1;
 	public Table() {
 		modo1 = modo.normal;
@@ -35,9 +36,9 @@ implements ActionListener {
 		label1.setBounds(10,10,100,30);		
 		add(label1);
 		
-		text = new JTextField();
-		text.setBounds(120,10, 150, 30);
-		add(text);
+		text1 = new JTextField();
+		text1.setBounds(120,10, 150, 30);
+		add(text1);
 		
 		
 		//40
@@ -50,6 +51,12 @@ implements ActionListener {
 		botonEditar.setBounds(120, 60, 100, 30);
 		add(botonEditar);
 		botonEditar.addActionListener(this);
+		
+		//
+		botonEliminar= new JButton("Eliminar");
+		botonEliminar.setBounds(120, 60, 100, 30);
+		add(botonEliminar);
+		botonEliminar.addActionListener(this);
 		
 		
 		tabla = new JTable();
@@ -90,8 +97,8 @@ implements ActionListener {
 		//this.label1.setText("has apretado botones");
 		if (e.getSource()==boton1) {
 			indice++;
-			String[] datos = {indice.toString(), text.getText()};
-			text.setText("");
+			String[] datos = {indice.toString(), text1.getText()};
+			text1.setText("");
             // Agregamos los datos a la tabla
             modelo.addRow(datos);
 		}
@@ -108,14 +115,14 @@ implements ActionListener {
 		            // Lo imprimimos en pantalla
 		            System.out.println(codigo);
 		            System.out.println(nombre);
-		            text.setText(nombre);					
+		            text1.setText(nombre);					
 					break;
 				case edit:
-					botonEditar.setText("Editar");
-					System.out.println("Editando");
-					String texto =  text.getText();
-					modelo.setValueAt(texto, id, 1);
-					this.modo1 = modo.normal;					
+					this.modo1 = modo.normal;
+					botonEditar.setText("Editar");					
+					String texto =  text1.getText();
+					//actualizar modelo
+					modelo.setValueAt(texto, id, 1);										
 					break;
 				default:
 					
