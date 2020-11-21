@@ -4,14 +4,15 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class Conversion extends JFrame 
-implements ActionListener, ItemListener {
+implements ActionListener, 
+ItemListener {
 		private JLabel label1;
 		private JLabel label2;
 		private JTextField txt1;
 		private JTextField txt2;
 		private JLabel resultado;		
 		private JButton btnSumar;
-		private JComboBox combo1;
+		private JComboBox<String> combo1;
 		public Conversion() {			
 			setLayout(null);			
 			
@@ -42,6 +43,8 @@ implements ActionListener, ItemListener {
 			combo1.addItem("division");
 			combo1.addItem("suma");
 			combo1.addItem("resta");
+			combo1.addItemListener(this);
+			
 			
 			
 			btnSumar= new JButton("Sumar:");
@@ -72,8 +75,16 @@ implements ActionListener, ItemListener {
 		
 		//captura de evento para combobox
 		@Override
-		public void itemStateChanged(ItemEvent arg0) {
+		public void itemStateChanged(ItemEvent e) {
 			// TODO Auto-generated method stub
-			
+			if (e.getSource()==combo1 && 
+					e.getStateChange() == ItemEvent.SELECTED) {
+				int estado = e.getStateChange();
+				String itemsel = (String) e.getItem();
+					JOptionPane.showMessageDialog(new JFrame(), 
+							"seleccionado:  " + itemsel, 
+							"título de la ventana", 
+								JOptionPane.ERROR_MESSAGE);
+			}
 		}
 }

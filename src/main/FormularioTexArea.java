@@ -74,6 +74,7 @@ KeyListener{
 
 
 	//evento click, implements KeyListener
+	//al pulsar la tecla
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// pulso un enter
@@ -86,15 +87,16 @@ KeyListener{
 			}
 		}
 	}
+	
 
-
+	//keyReleased: al soltar la tecla.
 	@Override
 	public void keyReleased(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
-
-
+	
+	//keyTyped:al pulsar y soltar la tecla.
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
