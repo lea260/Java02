@@ -62,6 +62,7 @@ implements ActionListener {
 		
 		tabla = new JTable();
 		tabla.setBounds(10, 100, 470, 200);
+		tabla.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 		add(tabla);
 		
 		modelo = new DefaultTableModel();
@@ -96,17 +97,14 @@ implements ActionListener {
 		
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		//this.label1.setText("has apretado botones");
-		
-		
-			//eliminar
 			
 		if (e.getSource()==botonEliminar) {
+			id = Integer.parseInt((String)modelo.getValueAt(tabla.getSelectedRow(), 0));
+			this.indiceEdit = tabla.getSelectedRow();
 			int dialogResult = JOptionPane.showConfirmDialog (null, 
 					"Desea eliminar id:" + id,
 					"Warning",JOptionPane.YES_NO_OPTION);
-			if(dialogResult == JOptionPane.YES_OPTION) {
+			if(dialogResult == JOptionPane.YES_OPTION) {				
 				modelo.removeRow(this.indiceEdit);
 			}
 			
@@ -122,7 +120,7 @@ implements ActionListener {
 				case normal:
 					botonEditar.setText("Confirmar");
 					this.modo1 = modo.edit;		
-					indiceEdit = tabla.getSelectedRow();
+					this.indiceEdit = tabla.getSelectedRow();
 		            String codigo = (String) modelo.getValueAt(tabla.getSelectedRow(), 0);
 		            id = Integer.parseInt(codigo);
 		            nombre = (String) modelo.getValueAt(tabla.getSelectedRow(), 1);
@@ -145,6 +143,6 @@ implements ActionListener {
 	        } else {
 	            System.out.println("Seleccione un renglon primero");
 	        }
-		}		
+		}//end editar		
 	}
 }
