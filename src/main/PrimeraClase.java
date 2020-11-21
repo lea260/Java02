@@ -7,7 +7,7 @@ public class PrimeraClase {
 		//FormularioTexArea form = new FormularioTexArea();
 		//posicion en x, posicion en y
 		try {
-			Conversion form = new Conversion();
+			Table form = new Table();
 			form.setBounds(0, 0, 500, 500);
 			form.setVisible(true);
 			form.setResizable(false);

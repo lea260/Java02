@@ -99,7 +99,7 @@ ItemListener {
 			}			
 		}
 		
-		//captura de evento para combobox
+		//captura de evento para combox
 		@Override
 		public void itemStateChanged(ItemEvent e) {
 			// TODO Auto-generated method stub
