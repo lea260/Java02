@@ -1,6 +1,8 @@
 package main;
 
 import java.awt.event.*;
+import java.text.DecimalFormat;
+
 import javax.swing.*;
 
 public class Conversion extends JFrame 
@@ -35,7 +37,7 @@ ItemListener {
 			add(txt2);//add(label1)			
 			
 			resultado = new JLabel("Resultado:");
-			resultado.setBounds(10,90,100,30);		
+			resultado.setBounds(10,90,480,30);		
 			add(resultado);//add(label1)	
 			
 			combo1 = new JComboBox();
@@ -49,7 +51,7 @@ ItemListener {
 			
 			
 			
-			btnSumar= new JButton("Sumar:");
+			btnSumar= new JButton("Calcular:");
 			btnSumar.setBounds(10, 170, 470, 30);
 			add(btnSumar);
 			btnSumar.addActionListener((ActionListener) this);
@@ -90,7 +92,9 @@ ItemListener {
 					resultadoNum= valor1-valor2;
 					break;				
 				}
-				resultadoStr = String.valueOf(resultadoNum);
+				DecimalFormat df = new DecimalFormat("0.00");
+				//resultadoStr = String.valueOf(resultadoNum);				
+			    resultadoStr = df.format(resultadoNum);
 				resultado.setText("Resultado:    "+resultadoStr);
 			}			
 		}
@@ -104,9 +108,9 @@ ItemListener {
 				String itemsel = (String) e.getItem();
 				this.seleccionado = itemsel;
 					JOptionPane.showMessageDialog(new JFrame(), 
-							"seleccionado:", 
-							"título de la ventana"+itemsel, 
-								JOptionPane.ERROR_MESSAGE);
+							"seleccionado:" +itemsel, 
+							"título de la ventana", 
+								JOptionPane.INFORMATION_MESSAGE);
 			}
 		}
 }
