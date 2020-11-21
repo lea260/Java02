@@ -60,16 +60,19 @@ implements ActionListener {
 		botonEliminar.addActionListener(this);
 		
 		
-		tabla = new JTable();
+		agregarDatos();
+		
+		//tabla = new JTable();
 		tabla.setBounds(10, 100, 470, 200);
 		tabla.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 		add(tabla);
 		
-		modelo = new DefaultTableModel();
-		modelo.setColumnIdentifiers(columnas);
-		tabla.setModel(modelo);
 		
-		agregarDatos();
+		/*modelo = new DefaultTableModel();
+		modelo.setColumnIdentifiers(columnas);
+		tabla.setModel(modelo);*/
+		
+		//agregarDatos();
 					
 		//260, suma setBounds(x,y, ancho, alto);
 		//y+alto+10px separacion
@@ -81,6 +84,11 @@ implements ActionListener {
 	}	
 		
 	private void agregarDatos() {
+		Object[][] data = new Object[][] {{"101", "Ramesh"}, {"102", "Adithya"}, {"103", "Jai"}, {"104", "Sai"}};
+		String[] columnNames = new String[] {"ID", "Name"};
+	    this.modelo = new DefaultTableModel(data, columnNames);
+	    this.tabla = new JTable(modelo);
+		/*
 		Object[][] datosAux = new Object[][] {{"101", "Ramesh"}, {"102", "Adithya"}, {"103", "Jai"}, {"104", "Sai"}};
 		int largo = datosAux.length;
         for (Integer i = 0; i < largo; i++) {
@@ -91,7 +99,7 @@ implements ActionListener {
             String[] datos = {(String)datosAux[i][0] , (String)datosAux[i][1] };
             // Agregamos los datos a la tabla
             modelo.addRow(datos);
-        }
+        }*/
     }
 	
 		
