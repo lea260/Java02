@@ -106,6 +106,7 @@ implements ActionListener {
 					"Warning",JOptionPane.YES_NO_OPTION);
 			if(dialogResult == JOptionPane.YES_OPTION) {				
 				modelo.removeRow(this.indiceEdit);
+				JOptionPane.showMessageDialog(null, "Exitosamente elimanda");
 			}
 			
 		} else if (e.getSource()==botonAgregar) {
