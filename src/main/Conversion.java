@@ -13,7 +13,9 @@ ItemListener {
 		private JLabel resultado;		
 		private JButton btnSumar;
 		private JComboBox<String> combo1;
-		public Conversion() {			
+		private String seleccionado;
+		public Conversion() {
+			this.seleccionado= "multiplicacion"; 
 			setLayout(null);			
 			
 			label1 = new JLabel("Valor 01:");
@@ -67,9 +69,29 @@ ItemListener {
 				//int resultadoNum= valor1+valor2;
 				valor1= Double.parseDouble(txt1.getText());
 				valor2= Double.parseDouble(txt2.getText());
-				double resultadoNum= valor1+valor2;
-				String resultadoStr = String.valueOf("Resultado:"+ resultadoNum);								
+				double resultadoNum=0;
+				String resultadoStr = "";								
 				resultado.setText(resultadoStr);
+				switch (this.seleccionado) {
+				case "multiplicacion":
+					//multiplicacion:
+					resultadoNum= valor1*valor2; 
+					break;
+				case "division":
+					//division
+					resultadoNum= valor1/valor2;
+					break;
+				case "suma":
+					//suma
+					resultadoNum= valor1+valor2;
+					break;
+				case "resta":
+					//resta
+					resultadoNum= valor1-valor2;
+					break;				
+				}
+				resultadoStr = String.valueOf(resultadoNum);
+				resultado.setText("Resultado:    "+resultadoStr);
 			}			
 		}
 		
@@ -78,12 +100,12 @@ ItemListener {
 		public void itemStateChanged(ItemEvent e) {
 			// TODO Auto-generated method stub
 			if (e.getSource()==combo1 && 
-					e.getStateChange() == ItemEvent.SELECTED) {
-				int estado = e.getStateChange();
+					e.getStateChange() == ItemEvent.SELECTED) {				
 				String itemsel = (String) e.getItem();
+				this.seleccionado = itemsel;
 					JOptionPane.showMessageDialog(new JFrame(), 
-							"seleccionado:  " + itemsel, 
-							"título de la ventana", 
+							"seleccionado:", 
+							"título de la ventana"+itemsel, 
 								JOptionPane.ERROR_MESSAGE);
 			}
 		}
